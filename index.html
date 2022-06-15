@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetCalculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head> 
+<body>
+    <div class="container">
+        <h1>best <span>SCIENTIFIC</span><br>&nbsp;&nbsp;&nbsp;CALCULATOR<br></h1>
+        <div class="display">
+            <input id="screen" type="text" placeholder="0">
+        </div>
+
+        <div class="btns">
+            <div class="row">
+                <button id="ce" onclick="backspc()">CE</button>
+                <button onclick="fact()"><b>x!</b></button>
+                <button class="btn">(</button>
+                <button class="btn">)</button>
+                <button class="btn">%</button>
+                <button id="ac" onclick="screen.value=''">AC</button>
+            </div>
+
+            <div class="row">
+                <button onclick="sin()"><b>sin</b></button>
+                <button onclick="pi()"><b>π</b></button>
+                <button class="btn">7</button>
+                <button class="btn">8</button>
+                <button class="btn">9</button>
+                <button class="btn" style="color: Crimson;">÷</button>
+            </div>
+
+            <div class="row">
+                <button onclick="cos()"><b>cos</b></button>
+                <button onclick="log()"><b>log</b></button>
+                <button class="btn">4</button>
+                <button class="btn">5</button>
+                <button class="btn">6</button>
+                <button class="btn" style="color: Crimson;">×</button>
+            </div>
+
+            <div class="row">
+                <button onclick="tan()"><b>tan</b></button>
+                <button onclick="sqrt()"><b>√</b></button>
+                <button class="btn">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+                <button class="btn" style="color: Crimson;">-</button>
+            </div>
+
+            <div class="row">
+                <button onclick="e()"><b>e</b></button>
+                <button onclick="pow()"><b>x <span style="position: relative; bottom: .4em; right: .1em;">y</span></b> </button>
+                <button class="btn">0</button>
+                <button class="btn">.</button>
+                <button id="eval" onclick="screen.value=eval(screen.value)">=</button>
+                <button class="btn" style="color: Crimson;">+</button>
+                </div>
+            </div>
+        </div>
+        <!-- <i style="font-size: 100px;" class="fa fa-reply"></i> -->
+    </div>
+
+    <!-- Fonction JS -->
+    <script type="text/javascript">
+        var screen=document.querySelector('#screen');
+        var btn=document.querySelectorAll('.btn');
+
+        /*============ Récupération des valeurs btn ============*/
+        for(item of btn)
+        {
+            item.addEventListener('click',(e)=>{
+                btntext=e.target.innerText;
+
+                if(btntext =='×')
+                {
+                    btntext= '*';
+                }
+
+                if(btntext=='÷')
+                {
+                    btntext='/';
+                }
+                screen.value+=btntext;
+            });
+        }
+        /*============ Fin Récupération des valeurs btn ============*/
+
+
+        /*============ Les Fonctions mathématiques ============*/
+        function sin() {
+            screen.value=Math.sin(screen.value);
+        }
+
+        function cos() {
+            screen.value=Math.cos(screen.value);
+        }
+
+        function tan() {
+            screen.value=Math.tan(screen.value);
+        }
+
+        function pow() {
+            screen.value=Math.pow(screen.value,2);
+        }
+
+        function sqrt() {
+            screen.value=Math.sqrt(screen.value,2);
+        }
+
+        function log() {
+            screen.value=Math.log(screen.value);
+        }
+
+        function pi() {
+            screen.value= 3.14159265359;
+        }
+
+        function e() {
+            screen.value=2.71828182846;
+        }
+
+        function fact()
+        {
+            var i, num, f;
+            f=1
+            num=screen.value;
+            for(i=1; i<=num; i++)
+            {
+                f=f*i;
+            }
+
+            i=i-1;
+
+            screen.value=f;
+        }
+        /*============ Fin des Fonctions mathématiques ============*/
+
+        function backspc() {
+            screen.value=screen.value.substr(0,screen.value.length-1);
+        }
+    </script>
+    <!-- Fin Fonction JS -->
+       
+</body>   
+</html>
